@@ -29,7 +29,7 @@ app.controller('searchController', ['$scope', '$http',
         });
 
         function fetch() {
-            $http.post("http://grabist.api:8080/api/search", {'query' : $scope.query.data})
+            $http.post("http://grabist-api.herokuapp.com/api/search", {'query' : $scope.query.data})
                 .then(function(response) {
                     $scope.tracks.data = response.data;
                     console.log(response.data);
@@ -37,7 +37,7 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.getTrack = function(track_id) {
-            $http.get("http://grabist.api:8080/api/info/"+ track_id)
+            $http.get("http://grabist-api.herokuapp.com/api/info/"+ track_id)
                 .then(function(response) {
                     $scope.trackData.data = response.data;
                     console.log(response);
@@ -45,7 +45,7 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.downloadTrack = function(track_id) {
-            $http.get("http://grabist.api:8080/api/download/"+ track_id)
+            $http.get("http://grabist-api.herokuapp.com/api/download/"+ track_id)
                 .then(function(response) {
                     $scope.download.url = response.data;
                     console.log(response);
