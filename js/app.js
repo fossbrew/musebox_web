@@ -1,9 +1,9 @@
-var app = angular.module('grabist', []);
+var app = angular.module('dabbr', []);
 
 app.controller('searchController', ['$scope', '$http',
     function($scope, $http) {
         $scope.query = {
-            data: 'The Weeknd'
+            data: 'Sunset lovers'
         };
 
         $scope.tracks = {
@@ -29,7 +29,7 @@ app.controller('searchController', ['$scope', '$http',
         });
 
         function fetch() {
-            $http.post("https://grabist-api.herokuapp.com/api/search", {'query' : $scope.query.data})
+            $http.post("https://dabbrapi.herokuapp.com/api/search", {'query' : $scope.query.data})
                 .then(function(response) {
                     $scope.tracks.data = response.data;
                     console.log(response.data);
@@ -37,7 +37,7 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.getTrack = function(track_id) {
-            $http.get("https://grabist-api.herokuapp.com/api/info/"+ track_id)
+            $http.get("https://dabbrapi.herokuapp.com/api/info/"+ track_id)
                 .then(function(response) {
                     $scope.trackData.data = response.data;
                     console.log(response);
@@ -45,7 +45,7 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.downloadTrack = function(track_id) {
-            $http.get("https://grabist-api.herokuapp.com/api/download/"+ track_id)
+            $http.get("https://dabbrapi.herokuapp.com/api/download/"+ track_id)
                 .then(function(response) {
                     $scope.download.url = response.data;
                     console.log(response);
