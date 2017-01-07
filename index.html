@@ -2,13 +2,13 @@
     <head>
         <title>Dabbr</title>
         <link rel="shortcut icon" type="image/png" href="images/logo.png"/>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/app.css">
         <link rel="stylesheet" type="text/css" href="css/theme.css">
+        <link rel="stylesheet" type="text/css" href="css/snackbar.css">
         <script src="js/app.js"></script>
         <script src="https://use.fontawesome.com/11af9c9f8b.js"></script>
         <script type="text/javascript">
@@ -25,55 +25,54 @@
         <script type="text/javascript" src="js/pace.js"></script>
         <link rel="stylesheet" type="text/css" href="css/pace.css">
     </head>
-    <body class="container">
-        <div class="text-center">
-            <div class="tutu">
-                <img class="logo" src="images/logo.png" style="border-radius:6%;">
-                <h4 style="font-family:courier;">Dabbr by <a href="http://rajathans.me">rajathans</a></h4>
-                <!-- <h5>Downloading music is simple as fuck.</h5> -->
-                <!-- <div style="position:relative; float:bottom">
-                    Designed and developed by <a href="http://rajathans.me">Rajat Hans</a>
-                </div> -->
-                <!-- <h5>Cool stuff coming soon! xx</h5> -->
+    <body>
+        <div class="progress">
+          <div class="progress-bar-danger" style="width: 100%"></div>
+        </div>
+        <div class="container" style="margin-top:-12px;">
+            <div >
+                <img class="logo" src="images/kyoku.png" style="height:10%;">
+            </div>
+            <div ng-controller="searchController">
+                <input type="text" class="form-control" placeholder="Type here..." ng-model="query.data">
+                <div style="overflow-y:scroll; height:75%;">
+                    <div ng-if="tracks.data.length == 0">
+                        <!-- <img style="margin-top:40px; margin-left:25%;" src="http://24.media.tumblr.com/09d752c4d06b88eaa7d75dfdbf63e32f/tumblr_mpehgjiJHQ1r8swqdo2_400.gif"> -->
+                        <!-- <h4>Type more or go back!!</h4> -->
+                        <!-- <div class="alert alert-danger">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong>Oh snap!</strong> We couldn't find anything! Change a few things up and try again.
+                        </div> -->
+                    </div>
+
+                    <table class="table table-striped table-hover">
+                        <tbody style="font-size:14px;">
+                            <tr ng-repeat="track in tracks.data">
+                                <td>{{$index + 1}}</td>
+                                <td>
+                                    <b>{{track.artist}}</b>
+                                    <small>{{track.track}}</small>
+                                </td>
+                                <td ng-click="downloadTrack(track.track_id)">
+                                    <a href="">
+                                        <i style="color:black" class="fa fa-download" aria-hidden="true" data-toggle="snackbar" data-content="Downloading..."></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    {{track.bitrate}}
+                                    <span ng-if="track.bitrate != 'VBR'">kbps</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div ng-controller="searchController">
-            <div class="tutu">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Coldplay gravity" ng-model="query.data">
-                    <span class="input-group-btn">
-                        <span class="btn btn-primary" type="button">
-                            <span>{{tracks.data.length}}</span>
-                        </span>
-                    </span>
-                </div>
+        <footer class="footer">
+            <div class="container text-center">
+                <p class="text-muted" style="margin-bottom:-30px;">more cool stuff coming soon! xx &copy <a href="http://github.com/rajathans">rajathans</a> / suggest features</p>
             </div>
-            <div style="overflow-y:scroll; height:70%;">
-                <div ng-if="tracks.data.length == 0">
-                    <img style="margin-top:40px; margin-left:25%;" src="http://24.media.tumblr.com/09d752c4d06b88eaa7d75dfdbf63e32f/tumblr_mpehgjiJHQ1r8swqdo2_400.gif">
-                    <!-- <h4>Type more or go back!!</h4> -->
-                </div>
-
-                <table class="table table-striped table-hover">
-                    <tbody style="font-size:14px;">
-                        <tr ng-repeat="track in tracks.data">
-                            <td>{{$index + 1}}</td>
-                            <td>
-                                <b>{{track.artist}}</b>
-                                <small>{{track.track}}</small>
-                            </td>
-                            <td ng-click="downloadTrack(track.track_id)">
-                                <a href="">
-                                    <i style="color:black" class="fa fa-download" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                            <td>
-                                {{track.bitrate}}
-                                <span ng-if="track.bitrate != 'VBR'">kbps</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </body>
-    </html>
+        </footer>
+        <script src="js/snackbar.min.js"></script>
+    </body>
+</html>

@@ -3,7 +3,7 @@ var app = angular.module('dabbr', []);
 app.controller('searchController', ['$scope', '$http',
     function($scope, $http) {
         $scope.query = {
-            data: 'Sunset lovers'
+            data: 'Chasing Cars Snow Patrol'
         };
 
         $scope.tracks = {
