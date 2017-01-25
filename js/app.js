@@ -1,5 +1,12 @@
 var app = angular.module('dabbr', []);
 
+app.config(["$sceDelegateProvider", function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        "http://*.pleerstorage.com/**"
+    ]);
+}]);
+
 app.controller('searchController', ['$scope', '$http',
     function($scope, $http) {
         $scope.query = {
@@ -14,11 +21,13 @@ app.controller('searchController', ['$scope', '$http',
             url : ''
         };
 
+        $scope.listen = {
+            url : ''
+        };
+
         $scope.trackData = {
             data : ''
         };
-
-        // console.log($scope.query);
 
         $scope.greeting = {
             text: 'Hello'
@@ -50,6 +59,20 @@ app.controller('searchController', ['$scope', '$http',
                     $scope.download.url = response.data;
                     // console.log(response);
                     window.open(response.data, "_self");
+                });
+        };
+
+        $scope.playTrack = function(track_id) {
+            $http.get("https://dabbrapi.herokuapp.com/api/download/"+ track_id)
+                .then(function(response) {
+                    $scope.listen.url = response.data;
+                    console.log($scope.listen.url);
+                });
+
+            $http.get("https://dabbrapi.herokuapp.com/api/info/"+ track_id)
+                .then(function(response) {
+                    $scope.trackData.data = response.data;
+                    console.log($scope.trackData.data);
                 });
         };
     }
