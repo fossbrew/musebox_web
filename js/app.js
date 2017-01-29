@@ -10,7 +10,7 @@ app.config(["$sceDelegateProvider", function($sceDelegateProvider) {
 app.controller('searchController', ['$scope', '$http',
     function($scope, $http) {
         $scope.query = {
-            data: 'deadmau5'
+            data: ''
         };
 
         $scope.tracks = {
