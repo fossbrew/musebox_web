@@ -9,24 +9,25 @@ app.config(["$sceDelegateProvider", function($sceDelegateProvider) {
 
 app.controller('searchController', ['$scope', '$http',
     function($scope, $http) {
+
         $scope.query = {
             data: ''
         };
 
         $scope.tracks = {
-            data : ''
+            data: ''
         };
 
         $scope.download = {
-            url : ''
+            url: ''
         };
 
         $scope.listen = {
-            url : ''
+            url: ''
         };
 
         $scope.trackData = {
-            data : ''
+            data: ''
         };
 
         $scope.greeting = {
@@ -40,15 +41,25 @@ app.controller('searchController', ['$scope', '$http',
         var apiUrl = "http://35.167.11.70:9000/api";
 
         function fetch() {
-            $http.post(apiUrl + "/search", {'query' : $scope.query.data})
+            $http.post(apiUrl + "/search", {
+                    'query': $scope.query.data
+                })
                 .then(function(response) {
-                    $scope.tracks.data = response.data;
-                    // console.log(response.data);
+                    // if (!Object.keys(response).length === 0) {
+                        $scope.tracks.data = response.data;
+                    // }
+                });
+        };
+
+        $scope.random = function() {
+            $http.get(apiUrl + "/billboard")
+                .then(function(response) {
+                    $scope.query.data = response[Math.floor(Math.random() * response.length)];
                 });
         };
 
         $scope.getTrack = function(track_id) {
-            $http.get(apiUrl + "/info/"+ track_id)
+            $http.get(apiUrl + "/info/" + track_id)
                 .then(function(response) {
                     $scope.trackData.data = response.data;
                     // console.log(response);
@@ -56,7 +67,7 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.downloadTrack = function(track_id) {
-            $http.get(apiUrl + "/download/"+ track_id)
+            $http.get(apiUrl + "/download/" + track_id)
                 .then(function(response) {
                     $scope.download.url = response.data;
                     // console.log(response);
@@ -65,13 +76,13 @@ app.controller('searchController', ['$scope', '$http',
         };
 
         $scope.playTrack = function(track_id) {
-            $http.get(apiUrl + "/download/"+ track_id)
+            $http.get(apiUrl + "/download/" + track_id)
                 .then(function(response) {
                     $scope.listen.url = response.data;
                     console.log($scope.listen.url);
                 });
 
-            $http.get(apiUrl + "/info/"+ track_id)
+            $http.get(apiUrl + "/info/" + track_id)
                 .then(function(response) {
                     $scope.trackData.data = response.data;
                     console.log($scope.trackData.data);
