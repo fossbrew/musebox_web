@@ -54,7 +54,9 @@ app.controller('searchController', ['$scope', '$http',
         $scope.random = function() {
             $http.get(apiUrl + "/billboard")
                 .then(function(response) {
-                    $scope.query.data = response.data[Math.floor(Math.random() * response.data.length)];
+                    console.log(response.data[Math.floor(Math.random() * response.data.length)]);
+                    $scope.query.data = response.data[Math.floor(Math.random() * response.data.length)].replace('featuring','').replace('Featuring','');
+                    console.log(response.data[Math.floor(Math.random() * response.data.length)].replace('featuring','').replace('Featuring',''));
                 });
         };
 
