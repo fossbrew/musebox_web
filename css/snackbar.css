@@ -1,6 +1,6 @@
 #snackbar-container {
   position: fixed;
-  left: 10px;
+  left: 33%;
   bottom: 20px;
   z-index: 99999;
   background-color: transparent;
@@ -39,7 +39,7 @@
 /*# sourceMappingURL=snackbar.css.map */
 
 .snackbar {
-  background-color: #F39C12;
+  background-color: #FF5A5F;
   color: white;
   font-size: 14px;
   width:400px;
