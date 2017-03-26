@@ -38,14 +38,14 @@
             }
         </style>
     </head>
-    <body>
-        <div ng-controller="searchController">
+    <body ng-controller="searchController">
+        <div ng-dblclick="random()">
             <div class="col-md-3" style="height:100%;padding-left:0px;padding-right:0px;">
                 <div class="text-center">
-                    <img id="logo" ng-mouseover="random()" class="logo" src="https://lh6.ggpht.com/wPFgLWoiO9xGvWpqVk7qI_FnifFzxpkD3aB9-G_YUHhjTazWI0sEQyQw52_W6iy9UQ2l=w300" style="font-family:'Amatic SC';margin-top:20%;height:16%;border-radius:5px;">
-                    <h1 style="font-family:'Amatic SC'; font-size:80px;color:#f8f8f8;">Musebox</h1>
+                    <!-- <img id="logo" ng-mouseover="random()" class="logo" src="https://lh6.ggpht.com/wPFgLWoiO9xGvWpqVk7qI_FnifFzxpkD3aB9-G_YUHhjTazWI0sEQyQw52_W6iy9UQ2l=w300" style="font-family:'Amatic SC';margin-top:20%;height:16%;border-radius:5px;"> -->
+                    <h1 style="font-family:'Amatic SC'; font-size:80px;color:#e8e8e8;">Musebox</h1>
                     <span>by <a style="font-size:16px;" href="http://github.com/rajathans"><i>rajathans</i></a></span>
-                    <!-- <h6><i>Hover over the logo to find a trending song</i></h6> -->
+                    <!-- <h6 style="color:#e9e9e9;">Hover over the logo to find a trending song</h6> -->
                 </div>
                 <div ng-show="listen.url">
                     <div class="list-group col=md-12" style="width:100%;border-radius:0px;bottom:0px;position:absolute;">
@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-9" style="background-color:#f8f8f8;height:100%;">
                 <div style="margin-top:10px;">
-                    <input type="text" style="background-color:#f8f8f8" class="form-control" placeholder="Type here to search or hover on the logo..." ng-model="query.data">
+                    <input type="text" style="background-color:#e9e9e9;color:black;" class="form-control" placeholder="Type here to search or double-click anywhere..." ng-model="query.data">
                     <div style="overflow-y:scroll;height:90%;">
                         <div ng-if="tracks.data.length == 0">
                             <div class="loader loader--style4" style="height:40%;margin-top:36%; margin-left:50%;">
