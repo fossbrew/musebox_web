@@ -1,95 +1,99 @@
 <html ng-app="dabbr">
-    <head>
-        <title>musebox</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/png" href="https://i.ytimg.com/vi/gxmHOwWh-i4/maxresdefault.jpg"/>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Varela|VT323|Pacifico|Amatic+SC" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Quicksand|Rubik|VT323" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/theme.css">
-        <link rel="stylesheet" type="text/css" href="css/app.css">
-        <link rel="stylesheet" type="text/css" href="css/snackbar.css">
-        <script src="js/app.js"></script>
-        <script src="https://use.fontawesome.com/11af9c9f8b.js"></script>
-        <script type="text/javascript">
-            window.paceOptions = {
-                document: true, // disabled
-                eventLag: true,
-                restartOnPushState: true,
-                restartOnRequestAfter: true,
-                ajax: {
-                    trackMethods: ['POST', 'GET']
-                }
-            };
-        </script>
-        <script type="text/javascript" src="js/pace.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/pace.css">
-        <style>
-            #logo {
-                transition: all 0.3s ease-in-out 0s;
-            }
 
-            #logo:hover {
-                cursor: default;
-                transform: rotate(360deg);
-                transition: all 0.3s ease-in-out 0s;
+<head>
+    <title>musebox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="https://i.ytimg.com/vi/gxmHOwWh-i4/maxresdefault.jpg" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Varela|VT323|Pacifico|Amatic+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Rubik|VT323" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/snackbar.css">
+    <script src="js/app.js"></script>
+    <script src="https://use.fontawesome.com/11af9c9f8b.js"></script>
+    <script type="text/javascript">
+        window.paceOptions = {
+            document: true, // disabled
+            eventLag: true,
+            restartOnPushState: false,
+            restartOnRequestAfter: true,
+            ajax: {
+                trackMethods: ['POST', 'GET']
             }
+        };
+    </script>
+    <script type="text/javascript" src="js/pace.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pace.css">
+    <style>
+        #logo {
+            transition: all 0.3s ease-in-out 0s;
+        }
 
-            body {
-                background-color:#F5F5F5;
-                font-family: 'Quicksand', sans-serif;
-                font-family: 'Rubik', sans-serif;
-            }
+        #logo:hover {
+            cursor: default;
+            transform: rotate(360deg);
+            transition: all 0.3s ease-in-out 0s;
+        }
 
-            .pushdown {
-                margin-top: 20px;
-                background-color:white;
-                padding: 10px;
-            }
-        </style>
-        <script async src='https://pepper.swat.io/embed.js?eyJwb3NpdGlvbiI6InJpZ2h0IiwiY29sb3IiOiI2QzVCN0IiLCJjdXN0b21Db2xvciI6ZmFsc2UsImljb24iOiJhdmF0YXIiLCJwcm9ub3VuIjoidXMiLCJsYW5ndWFnZSI6ImVuIiwiYnJhbmRlZCI6ZmFsc2UsImludHJvVGV4dCI6IkhleSB0aGVyZSwgaG9wZSB5b3UgYXJlIGhhdmluZyBhIGdyZWF0IHRpbWUgdXNpbmcgTXVzZWJveC4gU3VwcG9ydCB1cyBmb3IgbW9yZSBmcmVlIGFuZCBvcGVuIHNvdXJjZSBtdXNpYyEgPDMiLCJjaGFubmVscyI6W1siZ2l0aHViIiwiaHR0cDovL2dpdGh1Yi5jb20vbXVzZWJveGFwcCIsInNvY2lhbCJdXX0='></script>
-    </head>
-    <body ng-controller="searchController">
-        <div>
-            <div class="container" style="height:100%;">
-                <div style="margin-top:10px;">
-                    <div class="text-center">
-                        <span style="font-size:30px;color:DarkSlateGray;">musebox <span style="font-size:15px;">by <a href="https://github.com/rajathans">rajathans</a></span></span>
-                    </div>
-                    <div class="pushdown">
-                        <input type="text" style="background-color:white;color:black;border:0px;" class="form-control" placeholder="Type here to search or double-click anywhere inside this box..." ng-model="query.data">
-                        <div style="overflow-y:scroll;height:80vh;margin-top:10px;" ng-dblclick="random()">
-                            <table class="table" ng-if="tracks.data">
-                                <tbody style="font-size:15px;">
-                                    <tr ng-repeat="track in tracks.data">
-                                        <td style="padding-left: 15px;">
-                                            {{track.artist}} |
-                                            <span style="font-size:12px;"><i>{{track.track}}</i></span>
-                                        </td>
-                                        <!-- <td ng-click="playTrack(track.track_id)">
+        body {
+            background-color: #F5F5F5;
+            font-family: 'Quicksand', sans-serif;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        .pushdown {
+            margin-top: 20px;
+            background-color: white;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body ng-controller="searchController">
+    <div>
+        <div class="container" style="height:100%;">
+            <div style="margin-top:10px;">
+                <div class="text-center">
+                    <span style="font-size:30px;color:DarkSlateGray;">musebox <span style="font-size:15px;">by <a href="https://github.com/rajathans">rajathans</a></span></span>
+                </div>
+                <div class="pushdown">
+                    <input type="text" style="background-color:white;color:black;border:0px;" class="form-control" placeholder="Type here to search or double-click anywhere inside this box..."
+                        ng-model="query.data" ng-model-options="{ debounce:1000 }">
+                    <div style="overflow-y:scroll;height:80vh;margin-top:10px;" ng-dblclick="random()">
+                        <table class="table" ng-if="tracks.data">
+                            <tbody style="font-size:15px;">
+                                <tr ng-repeat="track in tracks.data">
+                                    <td style="padding-left: 15px;">
+                                        {{track.artist}} |
+                                        <span style="font-size:12px;"><i>{{track.track}}</i></span>
+                                    </td>
+                                    <!-- <td ng-click="playTrack(track.track_id)">
                                             <a href="" class="btn btn-primary btn-sm">Play</a>
                                         </td> -->
-                                        <td ng-click="downloadTrack(track.track_id)">
-                                            <a class="btn btn-danger btn-sm" style="padding-top:5px;" href="#" aria-hidden="true" data-toggle="snackbar" data-content="Downloading...">Download</a>
-                                        </td>
-                                        <td>
-                                            {{track.bitrate}}
-                                            <span ng-if="track.bitrate != 'VBR'">kbps</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div ng-if="tracks.data.length == 0" style="position: absolute;bottom: 0;pointer-events: none">
-                                <img src="https://i.ytimg.com/vi/gxmHOwWh-i4/maxresdefault.jpg" height="200px;">
-                            </div>
+                                    <td ng-click="downloadTrack(track.track_id)">
+                                        <a class="btn btn-danger btn-sm" style="padding-top:5px;" href="#" aria-hidden="true" data-toggle="snackbar" data-content="Downloading...">Download</a>
+                                    </td>
+                                    <td>
+                                        {{track.bitrate}}
+                                        <span ng-if="track.bitrate != 'VBR'">kbps</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-if="tracks.data.length == 0 && query.data != ''" class="text-center" style="margin-top:20%">
+                            <img src="http://24.media.tumblr.com/8210fd413c5ce209678ef82d65731443/tumblr_mjphnqLpNy1s5jjtzo1_400.gif" height="280px;">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="js/snackbar.min.js"></script>
-    </body>
+    </div>
+    <script src="js/snackbar.min.js"></script>
+</body>
+
 </html>
